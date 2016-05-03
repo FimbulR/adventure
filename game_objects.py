@@ -3,7 +3,7 @@ import simplejson as json
 import random as rnd
 import game_weapon as wpn
 
-save_file_path = "save\game.json"
+save_file_path = "__save__\game.json"
 hit_threshold = 65
 
 class GameObject():
@@ -21,6 +21,9 @@ class GameObject():
         return
 
     def save_game(self):
+        if not os.path.exists("__save__"):
+            os.makedirs("__save__")
+
         save_file = open(save_file_path, "w")
         data = {
             "hero_name": self.objects["hero_name"],
