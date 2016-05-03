@@ -1,0 +1,48 @@
+trim spazi bianchi prima e dopo gli input
+a monte del programma proponi scelta: Nuovo Gioco o Load
+definisci Oggetto = Eroe
+  definisci sotto classi per Eroe
+    definisci variazioni negli attributi
+definisci Oggetto = Mostro
+definisci Oggetto = Oggetto (es: equipaggiamento)
+crea comando di creazione Eroe + classe
+crea comando "Help" ("Status")
+crea comando "Quit"
+usare classe GameObject per gestire gli oggetti del gioco
+  definisci aggiungi obj
+  definisci get obj → funzione Examine già esistente
+  definisci remove obj
+  Salva e Carica: prendi valori da GameObject
+    crea comando "Salva" → salva le informazioni correnti su un file
+    crea comando "Carica" → recupera le informazioni dal file di salvataggio
+      può non esistere il file
+crea tutorial dopo la fase di creazione personaggio
+  test: equipaggia arma (differente a seconda della classe)
+  test: combatti contro un mostro predefinito
+definisci slot di equipaggiamento
+astrai HeroObject e MonsterObject in un CharacterObject generico
+sistema di combattimento
+  azione di attacco
+    / hero attacks monster \
+    \ monster attacks hero /
+    definisci chi attacca per primo → rnd_luck(0, x) > y ?
+  definisci status "inCombat" e blocca la situazione
+    blocca tutti i comandi non relativi al combattimento
+  crea comando Attacca
+    definisci: Attaccante, Difensore
+      recupera: forza Attaccante e difesa Difensore
+                punti vita Attaccante e punti vita Difensore
+      algoritmo attack:
+        - colpire - possibilità di colpire [attr_agi]
+          - numero rnd [0,99]
+          - il colpo va a segno se rnd > 65
+          - [attr_agi] è il modificatore del rnd → (rnd + agi) > 65
+        - if colpo True
+          - calcola danno
+            - attr_str + (danno arma * critico)
+              - calcola critico
+              - (rnd + agi) > 100 if True critico = 2 else critico = 1
+              - if (rnd + agi) < 20 critico = 0.5
+        - if colpo False
+          - "attack missed"
+  AI dei mostri per attaccare il giocatore
