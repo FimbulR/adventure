@@ -10,7 +10,6 @@ class WeaponObject():
 
     def __init__(self):
         return
-
 # end class WeaponObject
 
 class Fist(WeaponObject):

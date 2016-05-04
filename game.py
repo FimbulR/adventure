@@ -1,4 +1,5 @@
 #game.py
+import onoff
 import os
 import re
 import simplejson as json
@@ -34,6 +35,21 @@ def get_input(user_input):
     verb(noun_word)
   else:
     verb()
+
+
+class Foo(onoff.OnOffMixin):
+    def __init__(self):
+        self.on("hello", self.hello)
+
+    def hello(self, *args):
+        print("Hello: %s" % args)
+
+    def test(self, *args):
+        self.trigger("hello", *args)
+
+f = Foo()
+f.hello("hello events rock!")
+f.test("test events rock!")
 
 print(".....-----'''''-----.....-----'''''-----.....-----'''''-----.....")
 if os.path.isfile(obj.save_file_path):
@@ -82,7 +98,6 @@ if(input_game_type == "new"):
         game_objects.save_game()
         time.sleep(1)
         func.talk(master_name,'Nice to meet you {0}! Let\'s begin our journey!'.format(hero.get_name()))
-
         #START TUTORIAL
         func.talk(master_name,'Whooooooaaah! What is that disgusting creature??!')
         tutorial_monster = obj.GoblinObject("Gnakt")
@@ -92,7 +107,6 @@ if(input_game_type == "new"):
         func.talk(master_name,'Alas! Defeat that Goblin...')
         game_objects.add_obj("Gnakt", tutorial_monster)
         #END TUTORIAL
-
         while True:
             user_input = input("{0}> ".format(hero_name))
             if(user_input.lower() == "exit"):
@@ -100,6 +114,10 @@ if(input_game_type == "new"):
                 break
             else:
                 get_input(user_input)
+
+
+
+
     elif(ready.lower() == "no"):
         func.talk(master_name,'Well then. Goodbye coward!')
     else:

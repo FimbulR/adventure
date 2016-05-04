@@ -53,6 +53,7 @@ class GameObject():
                 print('*** Your enemy attacks first!')
                 self.__attack_hero(target)
                 self.__attack_monster(target)
+
         else:
             print('*** nothing to attack')
 
