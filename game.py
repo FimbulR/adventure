@@ -74,7 +74,8 @@ if(input_game_type == "new"):
         func.talk(master_name,'I have one last question. What is your name?')
         input_name = input("{0}> ".format(hero_name))
         hero_name = input_name.title()
-        hero.create(hero_name)
+        hero.set_name(hero_name)
+        hero.set_equip("weapon1", wpn.Fist())
         game_objects.add_obj("hero", hero)
         game_objects.add_obj("hero_name", hero_name)
         game_objects.add_obj("hero_class", hero.descr()['Class'].lower())
@@ -85,11 +86,11 @@ if(input_game_type == "new"):
         #START TUTORIAL
         func.talk(master_name,'Whooooooaaah! What is that disgusting creature??!')
         tutorial_monster = obj.GoblinObject("Gnakt")
+        tutorial_monster.set_equip("weapon1", wpn.UglyStick)
         func.talk(tutorial_monster.get_name(), 'Gnakt! Gnakt!!')
         time.sleep(1)
         func.talk(master_name,'Alas! Defeat that Goblin...')
         game_objects.add_obj("Gnakt", tutorial_monster)
-
         #END TUTORIAL
 
         while True:

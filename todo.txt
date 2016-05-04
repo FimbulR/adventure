@@ -1,3 +1,4 @@
+comandi errati o inesistenti previeni in ogni caso che si esca dal programma
 trim spazi bianchi prima e dopo gli input
 a monte del programma proponi scelta: Nuovo Gioco o Load
 definisci Oggetto = Eroe

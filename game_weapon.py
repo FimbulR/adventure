@@ -6,13 +6,11 @@ class WeaponObject():
     wpn_type = ""
     wpn_desc = ""
     wpn_hand = 1
-    wpn_damage = rnd.randint(0, 1)
+    wpn_damage = [0,1]
 
     def __init__(self):
         return
 
-    def get_damage(self):
-        return self.wpn_damage
 # end class WeaponObject
 
 class Fist(WeaponObject):
@@ -20,7 +18,7 @@ class Fist(WeaponObject):
     wpn_type = ""
     wpn_desc = "Only the brave or the fool fights with bare hands"
     wpn_hand = 1
-    wpn_damage = rnd.randint(1, 1)
+    wpn_damage = [1,1]
 # end class Fist
 
 class UglyStick(WeaponObject):
@@ -28,5 +26,5 @@ class UglyStick(WeaponObject):
     wpn_type = ""
     wpn_desc = "Goblins weapon of choice"
     wpn_hand = 2
-    wpn_damage = rnd.randint(0, 1)
+    wpn_damage = [0,2]
 # end class Fist
